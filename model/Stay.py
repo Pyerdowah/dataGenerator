@@ -1,5 +1,6 @@
 class Stay:
-    def __init__(self, stayId, dateOfStart, dateOfEnd, numberOfSeats, hotelId, price, dateOfContract, employeeIdWhoContracted):
+    def __init__(self, stayId, dateOfStart, dateOfEnd, numberOfSeats, hotelId, price, dateOfContract,
+                 employeeIdWhoContracted):
         self.stayId = stayId
         self.dateOfStart = dateOfStart
         self.dateOfEnd = dateOfEnd
@@ -10,5 +11,19 @@ class Stay:
         self.employeeWhoContracted = employeeIdWhoContracted
 
     def __str__(self):
-        return str(self.stayId) + " " + str(self.dateOfStart) + " " + str(self.dateOfEnd) + " " + str(self.numberOfSeats)\
-               + " " + str(self.hotelId) + " " + str(self.price) + " " + str(self.dateOfContract) + " " + str(self.employeeWhoContracted)
+        return str(self.stayId) + "|" + str(self.dateOfStart) + "|" + str(self.dateOfEnd) + "|" + str(
+            self.numberOfSeats) \
+               + "|" + str(self.hotelId) + "|" + str(self.price) + "|" + str(self.dateOfContract) + "|" + str(
+            self.employeeWhoContracted)
+
+    def getNumberOfSeats(self):
+        return self.numberOfSeats
+
+    def getPrice(self):
+        return self.price
+
+    def getStartDate(self):
+        return self.dateOfStart
+
+    def getEndDate(self):
+        return self.dateOfEnd

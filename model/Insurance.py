@@ -7,5 +7,11 @@ class Insurance:
         self.employeeIdWhoContracted = employeeIdWhoContracted
 
     def __str__(self):
-        return str(self.insuranceId) + " " + str(self.kind) + " " + str(self.price) + " " + str(self.dateOfContract)\
-               + " " + str(self.employeeIdWhoContracted)
+        return str(self.insuranceId) + "|" + str(self.kind) + "|" + str(self.price) + "|" + str(self.dateOfContract)\
+               + "|" + str(self.employeeIdWhoContracted)
+
+    def getInsuranceId(self):
+        return self.insuranceId
+
+    def getPrice(self):
+        return self.price

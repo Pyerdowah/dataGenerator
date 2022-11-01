@@ -13,10 +13,25 @@ class Transport:
         self.nameOfCompany = nameOfCompany
 
     def __str__(self):
-        return str(self.transportId) + " " + str(self.numberOfSeats) + " " + str(self.placeOfDeparture) \
-               + " " + str(self.placeOfDestination) + " " + str(self.dateOfDeparture) + " " + str(self.dateOfArrival) \
-               + " " + str(self.meanOfTransport) + " " + str(self.price) + " " + str(self.dateOfContract) \
-               + " " + str(self.employeeIdWhoContracted) + " " + str(self.nameOfCompany)
+        return str(self.transportId) + "|" + str(self.numberOfSeats) + "|" + str(self.placeOfDeparture) \
+               + "|" + str(self.placeOfDestination) + "|" + str(self.dateOfDeparture) + "|" + str(self.dateOfArrival) \
+               + "|" + str(self.meanOfTransport) + "|" + str(self.price) + "|" + str(self.dateOfContract) \
+               + "|" + str(self.employeeIdWhoContracted) + "|" + str(self.nameOfCompany)
 
     def getDestination(self):
         return self.placeOfDestination
+
+    def getStartDate(self):
+        return self.dateOfDeparture
+
+    def getTransportId(self):
+        return self.transportId
+
+    def getEndDate(self):
+        return self.dateOfArrival
+
+    def getNumberOfSeats(self):
+        return self.numberOfSeats
+
+    def getPrice(self):
+        return self.price

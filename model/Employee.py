@@ -8,8 +8,8 @@ class Employee:
         self.lastname = lastname
 
     def __str__(self):
-        return str(self.employeeId) + " " + str(self.lengthOfWork) + " " + str(self.salary) + " " + str(self.agency)\
-               + " " + str(self.firstname) + " " + str(self.lastname)
+        return str(self.employeeId) + "|" + str(self.lengthOfWork) + "|" + str(self.salary) + "|" + str(self.agency)\
+               + "|" + str(self.firstname) + "|" + str(self.lastname)
 
     def getEmployeeId(self):
         return self.employeeId

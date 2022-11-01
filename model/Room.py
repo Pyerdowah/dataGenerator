@@ -5,4 +5,4 @@ class Room:
         self.numberOfSeatsInTheRoom = numberOfSeatsInTheRoom
 
     def __str__(self):
-        return str(self.hotelId) + " " + str(self.roomId) + " " + str(self.numberOfSeatsInTheRoom)
+        return str(self.hotelId) + "|" + str(self.roomId) + "|" + str(self.numberOfSeatsInTheRoom)

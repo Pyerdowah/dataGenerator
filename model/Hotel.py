@@ -8,5 +8,8 @@ class Hotel:
         self.facilities = facilities
 
     def __str__(self):
-        return str(self.hotelId) + " \n" + str(self.numberOfStars) + " \n" + str(self.name) + " \n" + str(self.address) \
-               + " \n" + str(self.country) + " \n" + str(self.facilities) + "\n\n"
+        return str(self.hotelId) + "|" + str(self.numberOfStars) + "|" + str(self.name) + "|" + self.address.replace('\n', ', ') \
+               + "|" + str(self.country) + "|" + str(self.facilities)
+
+    def getHotelId(self):
+        return self.hotelId
