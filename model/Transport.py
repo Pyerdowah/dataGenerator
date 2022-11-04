@@ -1,6 +1,12 @@
+import itertools
+
+
 class Transport:
-    def __init__(self, transportId, numberOfSeats, placeOfDeparture, placeOfDestination, dateOfDeparture, dateOfArrival, meanOfTransport, price, dateOfContract, employeeIdWhoContracted, nameOfCompany):
-        self.transportId = transportId
+    transportId = itertools.count()
+
+    def __init__(self, numberOfSeats, placeOfDeparture, placeOfDestination, dateOfDeparture, dateOfArrival,
+                 meanOfTransport, price, dateOfContract, employeeIdWhoContracted, nameOfCompany):
+        self.transportId = next(Transport.transportId)
         self.numberOfSeats = numberOfSeats
         self.placeOfDeparture = placeOfDeparture
         self.placeOfDestination = placeOfDestination

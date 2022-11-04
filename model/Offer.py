@@ -1,6 +1,10 @@
+import itertools
+
+
 class Offer:
-    def __init__(self, offerId, stayId, transportId, employeeId, insuranceId, numberOfSeats, costPerPerson, dateOfStart, dateOfEnd, season):
-        self.offerId = offerId
+    offerId = itertools.count()
+    def __init__(self, stayId, transportId, employeeId, insuranceId, numberOfSeats, costPerPerson, dateOfStart, dateOfEnd, season):
+        self.offerId = next(Offer.offerId)
         self.stayId = stayId
         self.transportId = transportId
         self.employeeId = employeeId

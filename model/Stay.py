@@ -1,7 +1,12 @@
+import itertools
+
+
 class Stay:
-    def __init__(self, stayId, dateOfStart, dateOfEnd, numberOfSeats, hotelId, price, dateOfContract,
+    stayId = itertools.count()
+
+    def __init__(self, dateOfStart, dateOfEnd, numberOfSeats, hotelId, price, dateOfContract,
                  employeeIdWhoContracted):
-        self.stayId = stayId
+        self.stayId = next(Stay.stayId)
         self.dateOfStart = dateOfStart
         self.dateOfEnd = dateOfEnd
         self.numberOfSeats = numberOfSeats
