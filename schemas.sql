@@ -79,14 +79,14 @@ create table offer(
 	season varchar(10)
 )
 
-bulk insert dbo.employee from 'c:\users\paulina\documents\github\datagenerator\employee_t2.bulk' with (fieldterminator='|')
-bulk insert dbo.insurance from 'c:\users\paulina\documents\github\datagenerator\insurances_t2.bulk' with (fieldterminator='|')
-bulk insert dbo.transport from 'c:\users\paulina\documents\github\datagenerator\transports_t2.bulk' with (fieldterminator='|')
-bulk insert dbo.hotel from 'c:\users\paulina\documents\github\datagenerator\hotels_t2.bulk' with (fieldterminator='|')
-bulk insert dbo.food from 'c:\users\paulina\documents\github\datagenerator\food_t2.bulk' with (fieldterminator='|')
-bulk insert dbo.room from 'c:\users\paulina\documents\github\datagenerator\rooms_t2.bulk' with (fieldterminator='|')
-bulk insert dbo.stay from 'c:\users\paulina\documents\github\datagenerator\stays_t2.bulk' with (fieldterminator='|')
-bulk insert dbo.offer from 'c:\users\paulina\documents\github\datagenerator\offers_t2.bulk' with (fieldterminator='|')
+bulk insert dbo.employee from 'c:\users\paulina\documents\github\datagenerator\employee_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
+bulk insert dbo.insurance from 'c:\users\paulina\documents\github\datagenerator\insurances_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
+bulk insert dbo.transport from 'c:\users\paulina\documents\github\datagenerator\transports_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
+bulk insert dbo.hotel from 'c:\users\paulina\documents\github\datagenerator\hotels_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
+bulk insert dbo.food from 'c:\users\paulina\documents\github\datagenerator\food_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
+bulk insert dbo.room from 'c:\users\paulina\documents\github\datagenerator\rooms_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
+bulk insert dbo.stay from 'c:\users\paulina\documents\github\datagenerator\stays_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
+bulk insert dbo.offer from 'c:\users\paulina\documents\github\datagenerator\offers_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
 
 select * from offer
 select * from stay
