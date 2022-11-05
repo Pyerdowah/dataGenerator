@@ -118,9 +118,9 @@ def generateInsurances(start, end, howMany):
 hotelTransport = {}
 
 
-def generateTransports(start, end):
-    for stay in stays:
-        numberOfSeatsAvailable = stay.getNumberOfSeats()
+def generateTransports(start, end, id):
+    for k in range(id, len(stays)):
+        numberOfSeatsAvailable = stays[k].getNumberOfSeats()
         cities = []
         for city in citiesOfDeparture:
             cities.append(city)
@@ -129,31 +129,34 @@ def generateTransports(start, end):
             for city in cities:
                 if city == cityOfDeparture:
                     cities.remove(city)
-            numberOfSeatsTaken = np.random.randint(1, stay.getNumberOfSeats())
+            if numberOfSeatsAvailable > 1:
+                numberOfSeatsTaken = np.random.randint(1, numberOfSeatsAvailable)
+            else:
+                numberOfSeatsTaken = 1
             numberOfSeatsAvailable -= numberOfSeatsTaken
             if numberOfSeatsAvailable <= 0:
                 numberOfSeatsAvailable = numberOfSeatsTaken
-            startdateStart = datetime.datetime.strptime(stay.getStartDate(), '%d-%m-%Y')
-            startdateEnd = datetime.datetime.strptime(stay.getStartDate(), '%d-%m-%Y').replace(hour=23, minute=59)
+            startdateStart = datetime.datetime.strptime(stays[k].getStartDate(), '%d-%m-%Y')
+            startdateEnd = datetime.datetime.strptime(stays[k].getStartDate(), '%d-%m-%Y').replace(hour=23, minute=59)
             startdateStart = datetime.datetime.strftime(startdateStart, '%d-%m-%Y %H:%M')
             startdateEnd = datetime.datetime.strftime(startdateEnd, '%d-%m-%Y %H:%M')
             startDate = random_hour_date(startdateStart, startdateEnd, random.random())
-            enddateStart = datetime.datetime.strptime(stay.getEndDate(), '%d-%m-%Y')
-            enddateEnd = datetime.datetime.strptime(stay.getEndDate(), '%d-%m-%Y').replace(hour=23, minute=59)
+            enddateStart = datetime.datetime.strptime(stays[k].getEndDate(), '%d-%m-%Y')
+            enddateEnd = datetime.datetime.strptime(stays[k].getEndDate(), '%d-%m-%Y').replace(hour=23, minute=59)
             enddateStart = datetime.datetime.strftime(enddateStart, '%d-%m-%Y %H:%M')
             enddateEnd = datetime.datetime.strftime(enddateEnd, '%d-%m-%Y %H:%M')
             endDate = random_hour_date(enddateStart, enddateEnd, random.random())
             transports.append(Transport(numberOfSeatsTaken,
                                         cityOfDeparture,
-                                        hotels[stay.hotelId].country,
+                                        hotels[stays[k].hotelId].country,
                                         startDate,
                                         endDate,
                                         np.random.choice(meansOfTransport),
                                         round(fake.random.uniform(10000.0, 20000.0), 2),
-                                        random_day_date(start, stay.getStartDate(), random.random()),
+                                        random_day_date(start, stays[k].getStartDate(), random.random()),
                                         np.random.choice(employees).getEmployeeId(),
                                         np.random.choice(namesOfTansportCompanies)))
-            hotelTransport[len(transports) - 1] = stay
+            hotelTransport[len(transports) - 1] = stays[k]
             if numberOfSeatsAvailable == numberOfSeatsTaken:
                 break
 
@@ -226,7 +229,7 @@ generateFood()
 generateRooms()
 generateStays(t1periodStart, t1periodEnd, howMany)
 generateInsurances(t1periodStart, t1periodEnd, howMany)
-generateTransports(t1periodStart, t1periodEnd)
+generateTransports(t1periodStart, t1periodEnd, 0)
 generateOffers(t1periodStart, t1periodEnd, howMany, 0, 0)
 generateCsv(0)
 
@@ -264,6 +267,7 @@ for employee in employees:
         employee.lengthOfWork += 1
 
 id = len(transports)
+howManyStays = len(stays)
 for i in range(fake.random.randint(0, howMany)):
     age = fake.random.randint(18, 60)
     employees.append(Employee(age,
@@ -274,7 +278,7 @@ for i in range(fake.random.randint(0, howMany)):
 
 generateStays(t2periodStart, t2periodEnd, howMany)
 generateInsurances(t2periodStart, t2periodEnd, howMany)
-generateTransports(t2periodStart, t2periodEnd)
+generateTransports(t2periodStart, t2periodEnd, howManyStays)
 generateOffers(t2periodStart, t2periodEnd, howMany, id, 1)
 generateCsv(id)
 

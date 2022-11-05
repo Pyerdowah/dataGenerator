@@ -37,7 +37,7 @@ create table hotel(
 	numberofstars int,
 	nameofhotel varchar(30),
 	addressofhotel varchar(100),
-	country varchar(30),
+	country varchar(50),
 	facilities varchar(1000)
 )
 
