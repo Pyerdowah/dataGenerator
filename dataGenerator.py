@@ -38,9 +38,7 @@ offers = []
 def str_time_prop(start, end, time_format, prop):
     stime = time.mktime(time.strptime(start, time_format))
     etime = time.mktime(time.strptime(end, time_format))
-
     ptime = stime + prop * (etime - stime)
-
     return time.strftime(time_format, time.localtime(ptime))
 
 
@@ -175,13 +173,13 @@ def get_season(date):
         return 'Zima'
 
 
-def generateOffers(start, end, id, x):
+def generateOffers(start, end, howMany, id, x):
     for i in range(id, len(transports)):
         transport = transports[i]
         stay = hotelTransport[i]
         numberOfSeats = min(stay.getNumberOfSeats(), transport.getNumberOfSeats())
         insurance = np.random.choice(insurances)
-        if x == 1 and insurances.index(insurance) > 5:
+        if x == 1 and insurances.index(insurance) > howMany:
             insurance.setDateOfContract(random_day_date(start, stay.getStartDate(), random.random()))
         elif x == 0:
             insurance.setDateOfContract(random_day_date(start, stay.getStartDate(), random.random()))
@@ -229,7 +227,7 @@ generateRooms()
 generateStays(t1periodStart, t1periodEnd, howMany)
 generateInsurances(t1periodStart, t1periodEnd, howMany)
 generateTransports(t1periodStart, t1periodEnd)
-generateOffers(t1periodStart, t1periodEnd, 0, 0)
+generateOffers(t1periodStart, t1periodEnd, howMany, 0, 0)
 generateCsv(0)
 
 
@@ -273,10 +271,11 @@ for i in range(fake.random.randint(0, howMany)):
                               round(fake.random.uniform(4000.0, 10000.0), 2),
                               np.random.choice(agencies),
                               fake.first_name(), fake.last_name()))
+
 generateStays(t2periodStart, t2periodEnd, howMany)
 generateInsurances(t2periodStart, t2periodEnd, howMany)
 generateTransports(t2periodStart, t2periodEnd)
-generateOffers(t2periodStart, t2periodEnd, id, 1)
+generateOffers(t2periodStart, t2periodEnd, howMany, id, 1)
 generateCsv(id)
 
 loadDataToFile("employee_t2.bulk", employees)
