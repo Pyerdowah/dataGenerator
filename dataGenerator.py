@@ -161,15 +161,16 @@ def generateTransports(start, end, id):
                 break
 
 
-y = 2021
-seasons = {'Lato': (datetime.datetime(y, 6, 21), datetime.datetime(y, 9, 22)),
-           'Jesień': (datetime.datetime(y, 9, 23), datetime.datetime(y, 12, 20)),
-           'Wiosna': (datetime.datetime(y, 3, 21), datetime.datetime(y, 6, 20))}
+def getSeasons(y):
+    seasons = {'Lato': (datetime.datetime(y, 6, 21), datetime.datetime(y, 9, 22)),
+               'Jesień': (datetime.datetime(y, 9, 23), datetime.datetime(y, 12, 20)),
+               'Wiosna': (datetime.datetime(y, 3, 21), datetime.datetime(y, 6, 20))}
+    return seasons
 
 
 def get_season(date):
     date = datetime.datetime.strptime(date, '%d-%m-%Y')
-    for season, (season_start, season_end) in seasons.items():
+    for season, (season_start, season_end) in getSeasons(date.year).items():
         if season_start <= date <= season_end:
             return season
     else:

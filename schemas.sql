@@ -79,6 +79,7 @@ create table offer(
 	season varchar(10)
 )
 
+set dateformat dmy
 bulk insert dbo.employee from 'c:\users\paulina\documents\github\datagenerator\employee_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
 bulk insert dbo.insurance from 'c:\users\paulina\documents\github\datagenerator\insurances_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
 bulk insert dbo.transport from 'c:\users\paulina\documents\github\datagenerator\transports_t2.bulk' with (datafiletype = 'widechar', fieldterminator='|')
